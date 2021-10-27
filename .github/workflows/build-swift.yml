@@ -22,6 +22,8 @@ jobs:
         with:
           workflow: "build-libs.yml"
           path: ./libs
+          repo: "https://github.com/trinsic-id/okapi"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Build, Test, Pack
-        run: ./devops/BuildSwift.ps1 -GitTag ${{ github.ref }}
+        run: ./BuildSwift.ps1 -GitTag ${{ github.ref }}
         shell: pwsh
