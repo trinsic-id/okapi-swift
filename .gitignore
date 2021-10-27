@@ -88,3 +88,6 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+Sources/OkapiObjectiveC/libokapi.a
+Sources/OkapiObjectiveC/okapi.dll
+Sources/OkapiObjectiveC/okapi.dll.lib
