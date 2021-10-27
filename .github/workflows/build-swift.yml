@@ -22,7 +22,7 @@ jobs:
         with:
           workflow: "build-libs.yml"
           path: ./libs
-          repo: "https://github.com/trinsic-id/okapi"
+          repo: trinsic-id/okapi
           github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Build, Test, Pack
         run: ./BuildSwift.ps1 -GitTag ${{ github.ref }}
