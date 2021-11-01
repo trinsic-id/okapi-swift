@@ -71,7 +71,7 @@ final class OberonTests: XCTestCase {
         blindRequest.token = token.token
         blindRequest.blinding.append(userPin)
 
-        var userBlindedToken = try Oberon.blindToken(request: blindRequest)
+        let userBlindedToken = try Oberon.blindToken(request: blindRequest)
         var proofRequest = Okapi_Security_V1_CreateOberonProofRequest()
         proofRequest.data = data
         proofRequest.nonce = nonce

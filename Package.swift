@@ -31,14 +31,13 @@ let package = Package(
             .target(
                     name: "OkapiObjectiveC",
                     dependencies: [],
-                    exclude: ["libokapi.a", "libokapi_simulator.a", "libokapi_ios.a", "okapi.dll.lib", "okapi.dll"],
                     linkerSettings: [
                         LinkerSetting.linkedLibrary("okapi", .when(platforms: [.macOS])),
                         // TODO - macos builder won't flag this right
-//                        LinkerSetting.linkedLibrary("okapi.dll", .when(platforms: [.windows])),
+                        LinkerSetting.linkedLibrary("okapi.dll", .when(platforms: [.windows])),
                         LinkerSetting.linkedLibrary("okapi_ios", .when(platforms: [.iOS])),
                         // TODO - Support the simulator
-                        LinkerSetting.unsafeFlags([linkFlag], .when(platforms: [.macOS, .iOS, .windows]))
+//                        LinkerSetting.unsafeFlags([linkFlag], .when(platforms: [.macOS, .iOS, .windows]))
                     ]
             ),
             .target(
