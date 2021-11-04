@@ -2,7 +2,6 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
-#pragma once
 
 typedef struct ByteBuffer {
   int64_t len;

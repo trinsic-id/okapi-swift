@@ -1,0 +1,4 @@
+module LibOkapi {
+  header "okapi.h"
+  export *
+}

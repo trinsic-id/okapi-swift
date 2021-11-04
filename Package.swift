@@ -4,12 +4,6 @@
 import PackageDescription
 import Foundation
 
-var filePath = URL(fileURLWithPath: #filePath)
-        .deletingLastPathComponent()
-        .appendingPathComponent("Sources")
-        .appendingPathComponent("OkapiObjectiveC");
-let linkFlag: String = "-L\(filePath.relativePath)";
-
 let package = Package(
         name: "Okapi",
         platforms: [
@@ -19,7 +13,7 @@ let package = Package(
             // Products define the executables and libraries a package produces, and make them visible to other packages.
             .library(
                     name: "TrinsicOkapi",
-                    targets: ["OkapiSwift", "OkapiObjectiveC"]),
+                    targets: ["OkapiSwift"]),
         ],
         dependencies: [
             // Dependencies declare other packages that this package depends on.
@@ -28,21 +22,17 @@ let package = Package(
         targets: [
             // Targets are the basic building blocks of a package. A target can define a module or a test suite.
             // Targets can depend on other targets in this package, and on products in packages this package depends on.
-            .target(
-                    name: "OkapiObjectiveC",
-                    dependencies: [],
-                    linkerSettings: [
-                        LinkerSetting.linkedLibrary("okapi", .when(platforms: [.macOS])),
-                        // TODO - macos builder won't flag this right
-                        LinkerSetting.linkedLibrary("okapi.dll", .when(platforms: [.windows])),
-                        LinkerSetting.linkedLibrary("okapi_ios", .when(platforms: [.iOS])),
-                        // TODO - Support the simulator
-//                        LinkerSetting.unsafeFlags([linkFlag], .when(platforms: [.macOS, .iOS, .windows]))
-                    ]
+            .binaryTarget(
+                    name: "OkapiC",
+                    path: "Frameworks/OkapiC.xcframework"
             ),
             .target(
                     name: "OkapiSwift",
-                    dependencies: ["OkapiObjectiveC", "SwiftProtobuf"]),
+                    dependencies: ["SwiftProtobuf", "OkapiC"],
+                    cSettings: [
+                        .headerSearchPath("Frameworks/**"),
+                    ]
+            ),
             .testTarget(
                     name: "OkapiTests",
                     dependencies: ["OkapiSwift"]),

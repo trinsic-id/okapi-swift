@@ -3,7 +3,7 @@
 //
 
 import Foundation
-import OkapiObjectiveC
+import OkapiC
 import SwiftProtobuf
 
 public enum OkapiError: Error {
