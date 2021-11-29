@@ -44,7 +44,7 @@ struct OkapiNative {
 
     private static func freeMemory(requestBuffer: ByteBuffer, responseBuffer: ByteBuffer, errorBuffer: ExternError) {
         // Proper memory cleanup
-        didcomm_byte_buffer_free(responseBuffer);
-        didcomm_string_free(errorBuffer.message);
+        okapi_byte_buffer_free(responseBuffer);
+        okapi_string_free(errorBuffer.message);
     }
 }
