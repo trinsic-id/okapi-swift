@@ -1,7 +1,7 @@
 import XCTest
 import Foundation
 
-@testable import OkapiSwift
+@testable import Okapi
 
 final class OkapiTests: XCTestCase {
     func testGenerateKey() throws {

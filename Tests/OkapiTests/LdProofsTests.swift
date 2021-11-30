@@ -6,7 +6,7 @@ import XCTest
 import SwiftProtobuf
 import Foundation
 
-@testable import OkapiSwift
+@testable import Okapi
 
 final class LdProofsTests: XCTestCase {
     func testGenerateCapabilityInvocationProofWithJCS() throws {

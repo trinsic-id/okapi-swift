@@ -94,3 +94,5 @@ Sources/OkapiObjectiveC/okapi.dll.lib
 .idea/modules.xml
 .idea/okapi-swift.iml
 .idea/vcs.xml
+
+.DS_Store

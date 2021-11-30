@@ -3,7 +3,7 @@
 //
 
 import Foundation
-import OkapiObjectiveC
+import OkapiNative
 import SwiftProtobuf
 
 public enum OkapiError: Error {
@@ -12,7 +12,7 @@ public enum OkapiError: Error {
 
 typealias NativeHandler = (ByteBuffer, UnsafeMutablePointer<ByteBuffer>, UnsafeMutablePointer<ExternError>) -> Int32
 
-struct OkapiNative {
+struct Ffi {
     static func nativeCall<T_response: SwiftProtobuf.Message>(request: SwiftProtobuf.Message,
                                                               nativeFunction: NativeHandler) throws -> T_response {
         var responseBuffer = ByteBuffer();
