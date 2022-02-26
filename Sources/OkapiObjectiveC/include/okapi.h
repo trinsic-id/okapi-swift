@@ -2,7 +2,6 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
-#pragma once
 
 typedef struct ByteBuffer {
   int64_t len;
@@ -75,3 +74,23 @@ int32_t oberon_verify_proof(struct ByteBuffer request,
 void didcomm_byte_buffer_free(struct ByteBuffer v);
 
 void didcomm_string_free(char *s);
+
+void okapi_bytebuffer_free(struct ByteBuffer v);
+
+void okapi_string_free(char *s);
+
+int32_t blake3_hash(struct ByteBuffer request,
+                    struct ByteBuffer *response,
+                    struct ExternError *err);
+
+int32_t blake3_keyed_hash(struct ByteBuffer request,
+                          struct ByteBuffer *response,
+                          struct ExternError *err);
+
+int32_t blake3_derive_key(struct ByteBuffer request,
+                          struct ByteBuffer *response,
+                          struct ExternError *err);
+
+int32_t sha256_hash(struct ByteBuffer request,
+                    struct ByteBuffer *response,
+                    struct ExternError *err);
