@@ -21,8 +21,8 @@ struct Ffi {
         var result: Int32 = 0;
         var requestData = try request.serializedData();
         requestBuffer.len = Int64(requestData.count);
-        requestData.withUnsafeMutableBytes { (pointer: UnsafeMutablePointer<UInt8>) in
-            requestBuffer.data = pointer;
+        requestData.withUnsafeMutableBytes { (pointer: UnsafeMutableRawBufferPointer) in
+            requestBuffer.data = UnsafeMutablePointer(pointer.bindMemory(to: UInt8.self).baseAddress!);
             result = nativeFunction(requestBuffer, &responseBuffer, &errorBuffer);
         };
         try assertNoError(result: result, errorBuffer: errorBuffer, requestBuffer: requestBuffer, responseBuffer: responseBuffer);
