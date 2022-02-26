@@ -3,10 +3,6 @@ name: Build Swift SDK
 on:
   workflow_dispatch:
   pull_request:
-    paths:
-      - "swift/**"
-      - "proto/**"
-      - ".github/workflows/*swift*"
   push:
     branches:
       - main
