@@ -27,8 +27,8 @@ let package = Package(
                 dependencies: ["OkapiNative", "SwiftProtobuf"]),
             .binaryTarget(
                 name: "OkapiNative",
-                url: "https://github.com/trinsic-id/okapi/releases/download/v1.4.0/okapi.xcframework-1.4.0.zip",
-                checksum: "84d7d48d1a954a87afb718b5ebcdc61f68e49b618e81d1e3cc5607cc24964f22"),
+                url: "https://github.com/trinsic-id/okapi/releases/download/v1.5.0/okapi.xcframework-1.5.0.zip",
+                checksum: "5a16ed243d5e92750b4a4f6affa4d0314ef80acd10fca003a25fdb81b4aab2c7"),
             .testTarget(
                 name: "OkapiTests",
                 dependencies: ["Okapi"]),
