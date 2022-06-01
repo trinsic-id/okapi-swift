@@ -4,6 +4,12 @@ import Foundation
 @testable import Okapi
 
 final class OkapiTests: XCTestCase {
+    func testMetadata() throws {
+        let request = Okapi_Metadata_MetadataRequest();
+        let response = try Metadata.getMetadata(request: request);
+        assert(response.versionMajor != 0 || response.versionMinor != 0);
+    }
+    
     func testGenerateKey() throws {
         var request = Okapi_Keys_V1_GenerateKeyRequest();
         request.keyType = Okapi_Keys_V1_KeyType.ed25519;
