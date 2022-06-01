@@ -8,12 +8,4 @@ public struct LdProofs {
                 });
         return response;
     }
-
-    public static func verifyProof(request: Okapi_Proofs_V1_VerifyProofRequest) throws -> Okapi_Proofs_V1_VerifyProofResponse {
-        let response: Okapi_Proofs_V1_VerifyProofResponse = try Ffi.nativeCall(request: request,
-                nativeFunction: { (requestBuffer, responseBufferPtr, errorBufferPtr) in
-                    ldproofs_verify_proof(requestBuffer, responseBufferPtr, errorBufferPtr)
-                });
-        return response;
-    }
 }

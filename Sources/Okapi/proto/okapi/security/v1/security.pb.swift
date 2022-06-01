@@ -224,6 +224,40 @@ public struct Okapi_Security_V1_UnBlindOberonTokenResponse {
   public init() {}
 }
 
+/// Verify that an oberon token comes from the desired issuer
+public struct Okapi_Security_V1_VerifyOberonTokenRequest {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// raw token bytes
+  public var token: Data = Data()
+
+  /// token is valid to this public key?
+  public var pk: Data = Data()
+
+  /// public part of oberon protocol - can be any data
+  public var data: Data = Data()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// Contains the verification result for the oberon token
+public struct Okapi_Security_V1_VerifyOberonTokenResponse {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// token is valid to the public key
+  public var valid: Bool = false
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "okapi.security.v1"
@@ -673,6 +707,82 @@ extension Okapi_Security_V1_UnBlindOberonTokenResponse: SwiftProtobuf.Message, S
 
   public static func ==(lhs: Okapi_Security_V1_UnBlindOberonTokenResponse, rhs: Okapi_Security_V1_UnBlindOberonTokenResponse) -> Bool {
     if lhs.token != rhs.token {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Okapi_Security_V1_VerifyOberonTokenRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".VerifyOberonTokenRequest"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "token"),
+    2: .same(proto: "pk"),
+    3: .same(proto: "data"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularBytesField(value: &self.token) }()
+      case 2: try { try decoder.decodeSingularBytesField(value: &self.pk) }()
+      case 3: try { try decoder.decodeSingularBytesField(value: &self.data) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.token.isEmpty {
+      try visitor.visitSingularBytesField(value: self.token, fieldNumber: 1)
+    }
+    if !self.pk.isEmpty {
+      try visitor.visitSingularBytesField(value: self.pk, fieldNumber: 2)
+    }
+    if !self.data.isEmpty {
+      try visitor.visitSingularBytesField(value: self.data, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Okapi_Security_V1_VerifyOberonTokenRequest, rhs: Okapi_Security_V1_VerifyOberonTokenRequest) -> Bool {
+    if lhs.token != rhs.token {return false}
+    if lhs.pk != rhs.pk {return false}
+    if lhs.data != rhs.data {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Okapi_Security_V1_VerifyOberonTokenResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".VerifyOberonTokenResponse"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "valid"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularBoolField(value: &self.valid) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.valid != false {
+      try visitor.visitSingularBoolField(value: self.valid, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Okapi_Security_V1_VerifyOberonTokenResponse, rhs: Okapi_Security_V1_VerifyOberonTokenResponse) -> Bool {
+    if lhs.valid != rhs.valid {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
