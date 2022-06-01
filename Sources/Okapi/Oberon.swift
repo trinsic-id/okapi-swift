@@ -40,6 +40,14 @@ public struct Oberon {
                 });
         return response;
     }
+    
+    public static func verifyToken(request: Okapi_Security_V1_VerifyOberonTokenRequest) throws -> Okapi_Security_V1_VerifyOberonTokenResponse {
+        let response: Okapi_Security_V1_VerifyOberonTokenResponse = try Ffi.nativeCall(request: request,
+                nativeFunction: { (requestBuffer, responseBufferPtr, errorBufferPtr) in
+                    oberon_verify_token(requestBuffer, responseBufferPtr, errorBufferPtr)
+                });
+        return response;
+    }
 
     public static func verifyProof(request: Okapi_Security_V1_VerifyOberonProofRequest) throws -> Okapi_Security_V1_VerifyOberonProofResponse {
         let response: Okapi_Security_V1_VerifyOberonProofResponse = try Ffi.nativeCall(request: request,
